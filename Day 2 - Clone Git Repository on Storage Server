@@ -1,0 +1,53 @@
+The DevOps team established a new Git repository last week, which remains unused at present. However, the Nautilus application development team now requires a copy of this repository on the Storage Server in the Stratos DC. Follow the provided details to clone the repository:
+
+
+1.	The repository to be cloned is located at /opt/media.git
+
+2.	Clone this Git repository to the /usr/src/kodekloudrepos directory. Perform this task using the natasha user, and ensure that no modifications are made to the repository or existing directories, such as changing permissions or making unauthorized alterations.
+Below is the exact, safe procedure to clone the Git repository as per the requirements, with clear explanation of each command. This follows KodeKloud / Nautilus task standards (no permission or repo changes).
+________________________________________
+🔧 Task Summary
+•	Source repo: /opt/media.git (bare repository)
+•	Destination: /usr/src/kodekloudrepos
+•	User: natasha
+•	Restriction: ❌ No permission changes, ❌ No repo modifications
+________________________________________
+✅ Step-by-Step Commands (with Explanation)
+1️⃣ Login to Storage Server as natasha
+ssh natasha@ststor01
+🔹 Logs into the Storage Server using the correct user (natasha).
+________________________________________
+2️⃣ Verify Git is installed
+git --version
+🔹 Confirms Git is already installed.
+⚠️ Do NOT install or modify packages unless explicitly asked.
+________________________________________
+3️⃣ Navigate to the destination directory
+cd /usr/src/kodekloudrepos
+🔹 Moves into the directory where the repository must be cloned.
+🔹 Directory already exists — do not create or modify it.
+________________________________________
+4️⃣ Clone the repository
+git clone /opt/media.git
+🔹 Clones the bare repository from /opt/media.git
+🔹 A new directory media will be created automatically
+🔹 This operation is read-only safe and does not alter the source repo
+________________________________________
+5️⃣ Verify the clone
+ls
+🔹 Confirms that the repository was cloned successfully.
+(Optional)
+cd media && git status
+🔹 Ensures repository integrity (should show clean working tree).
+________________________________________
+📌 Important Notes (Why this is Correct)
+✔ Used correct user (natasha)
+✔ Did not change permissions
+✔ Did not modify the source repository
+✔ Followed enterprise Git best practices
+✔ Matches real-world DevOps workflows
+________________________________________
+🧠 Key Concept (Quick Reminder)
+•	Bare repositories are used as central repositories
+•	They cannot be edited directly
+•	Developers clone them to work locally
