@@ -1,0 +1,75 @@
+The Nautilus development team has provided requirements to the DevOps team for a new application development project, specifically requesting the establishment of a Git repository. Follow the instructions below to create the Git repository on the Storage server in the Stratos DC: Utilize yum to install the git package on the Storage Server. Create a bare repository named /opt/beta.git (ensure exact name usage).
+Below is the exact, step-by-step solution with commands and clear explanations, written the way it’s expected in xFusionCorp / Nautilus labs and real DevOps work.
+________________________________________
+🎯 Task Objective
+On the Storage Server (ststor01):
+1.	Install Git using yum
+2.	Create a bare Git repository named exactly:
+/opt/beta.git
+________________________________________
+🖥️ Target Server Details
+Server	IP	User	Purpose
+ststor01	172.16.238.15	natasha	Nautilus Storage Server
+________________________________________
+✅ Step-by-Step Commands with Detailed Explanation
+________________________________________
+1️⃣ SSH into the Storage Server
+ssh natasha@172.16.238.15
+📌 Explanation
+•	ssh → Securely connects to the remote server
+•	natasha → User provided for Storage Server
+•	172.16.238.15 → IP of ststor01
+•	Enter password: Bl@kW
+________________________________________
+2️⃣ Switch to Root User
+sudo -i
+📌 Explanation
+•	Required to install packages and create directories under /opt
+•	-i gives a root login shell
+________________________________________
+3️⃣ Install Git Using yum
+yum install -y git
+📌 Explanation
+•	yum → Package manager for RHEL/CentOS/Rocky systems
+•	git → Git version control system
+•	-y → Automatically confirms installation
+________________________________________
+4️⃣ Verify Git Installation (Optional but Recommended)
+git --version
+📌 Explanation
+•	Confirms Git is installed successfully
+Expected output:
+git version x.x.x
+________________________________________
+5️⃣ Create the Bare Git Repository
+git init --bare /opt/beta.git
+📌 Explanation
+•	git init → Initializes a Git repository
+•	--bare → Creates a bare repository
+o	No working directory
+o	Used as a central/shared repo
+•	/opt/beta.git → Exact path and name as required
+________________________________________
+6️⃣ Verify Repository Creation
+ls -ld /opt/beta.git
+📌 Explanation
+•	Confirms the repository directory exists
+You can also check:
+ls /opt/beta.git
+Expected contents:
+HEAD
+branches
+config
+hooks
+objects
+refs
+✔ This confirms it is a valid bare Git repository
+________________________________________
+🎉 Final Outcome
+✔ Git installed successfully on Storage Server
+✔ Bare Git repository created at /opt/beta.git
+✔ Repository ready for developers to clone and push
+✔ Task completed as per Nautilus DevOps requirements
+________________________________________
+🧠 Interview-Ready One-Liner
+“A bare Git repository was created on the storage server using git init --bare to act as a centralized repository for team collaboration.”
