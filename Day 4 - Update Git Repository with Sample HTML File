@@ -1,0 +1,146 @@
+The Nautilus development team has initiated a new project development, establishing various Git repositories to manage each project's source code. Recently, a repository named /opt/cluster.git was created. The team has provided a sample index.html file located on the jump host under the /tmp directory. This repository has been cloned to /usr/src/kodekloudrepos on the storage server in the Stratos DC.
+
+1.	Copy the sample index.html file from the jump host to the storage server placing it within the cloned repository at /usr/src/kodekloudrepos/cluster.
+2.	Add and commit the file to the repository.
+3.	Push the changes to the master branch.
+
+
+TASK OVERVIEW (What we need to do)
+
+Copy index.html from jump host → storage server
+
+Place it inside the cloned Git repo:
+
+/usr/src/kodekloudrepos/cluster
+
+
+Add the file to Git
+
+Commit the change
+
+Push it to the master branch
+
+⚠️ Important:
+
+Use thor on jump host
+
+Use natasha on storage server
+
+Do not change permissions unnecessarily
+
+🧩 STEP 1: Copy index.html from Jump Host to Storage Server
+📍 On jump host (user: thor)
+scp /tmp/index.html natasha@ststor01:/tmp/
+
+🔍 Explanation
+
+scp → Secure Copy Protocol (copy files over SSH)
+
+/tmp/index.html → Source file on jump host
+
+natasha@ststor01:/tmp/ → Destination on storage server
+
+We copy it to /tmp first (safe staging location)
+
+🧩 STEP 2: Login to Storage Server
+ssh natasha@ststor01
+
+🔍 Explanation
+
+Logs into the storage server where the Git repository exists
+
+🧩 STEP 3: Move the file into the cloned Git repository
+mv /tmp/index.html /usr/src/kodekloudrepos/cluster/
+
+🔍 Explanation
+
+Moves the file into the working directory of the Git repo
+
+This makes Git trackable changes possible
+
+🧩 STEP 4: Navigate to the Git repository
+cd /usr/src/kodekloudrepos/cluster
+
+🔍 Explanation
+
+All Git commands must be run inside the repository
+
+🧩 STEP 5: Check Git status
+git status
+
+🔍 Explanation
+
+Confirms Git has detected index.html as a new/untracked file
+
+Always check before committing (best practice)
+
+🧩 STEP 6: Add the file to Git staging area
+git add index.html
+
+🔍 Explanation
+
+Moves the file from working directory → staging area
+
+Only staged files get committed
+
+🧩 STEP 7: Commit the file
+git commit -m "Added sample index.html file"
+
+🔍 Explanation
+
+Saves the change permanently in local Git history
+
+-m → Commit message (clear and meaningful)
+
+🧩 STEP 8: Push changes to master branch
+git push origin master
+
+🔍 Explanation
+
+origin → Remote repository (/opt/cluster.git)
+
+master → Branch name
+
+Uploads your commit to the central repository
+
+✅ FINAL RESULT
+
+✔ index.html copied correctly
+✔ Added to Git repository
+✔ Committed with proper message
+✔ Pushed to master branch
+✔ Repository now updated for all developers
+
+🧠 WHAT YOU LEARNED (Very important)
+
+This task covered multiple DevOps fundamentals:
+
+SSH & SCP file transfer
+
+Working with multiple servers
+
+Git working directory vs staging area vs repository
+
+Safe production practices
+
+Real-world collaboration workflow
+
+This is exactly what DevOps engineers do daily.
+
+🏆 LINKEDIN SUCCESS POST (Ready to Copy–Paste)
+🚀 DevOps Task Completed Successfully! 🚀
+
+Completed a Git repository workflow as part of the Nautilus project in the Stratos Datacenter.
+
+🔹 Copied application files securely between servers
+🔹 Added and committed changes to a cloned Git repository
+🔹 Pushed updates to the master branch following best practices
+
+This task strengthened my hands-on experience with:
+✔ Linux & SSH
+✔ Git version control
+✔ Multi-server DevOps workflows
+
+Consistent practice and real-world scenarios are helping me grow every day on my DevOps journey 💪
+
+#DevOps #Git #Linux #VersionControl #Automation #CloudEngineering #LearningByDoing #KodeKloud #CareerGrowth
