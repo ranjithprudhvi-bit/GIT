@@ -1,0 +1,113 @@
+The Nautilus developers are engaged in active development on one of the project repositories located at /usr/src/kodekloudrepos/beta. During testing, several test branches were created, and now they require cleanup. Here are the requirements provided to the DevOps team:
+
+
+On the Storage server in Stratos DC, delete a branch named xfusioncorp_beta from the /usr/src/kodekloudrepos/beta Git repository.
+
+📌 Task Objective
+The Nautilus development team requested the cleanup of test branches created during development.
+The specific requirement was:
+Delete the Git branch named xfusioncorp_beta from the repository located at
+/usr/src/kodekloudrepos/beta on the Storage Server (ststor01)
+________________________________________
+🖥️ Environment Details
+•	Server: Storage Server (ststor01)
+•	User: natasha
+•	Repository Path: /usr/src/kodekloudrepos/beta
+•	Tool Used: Git
+•	Branch to Delete: xfusioncorp_beta
+________________________________________
+🔍 Step-by-Step Investigation & Execution
+1️⃣ Navigated to the Repository
+cd /usr/src/kodekloudrepos/beta
+Purpose:
+Ensure that Git commands are executed inside the correct repository.
+________________________________________
+2️⃣ Initial Attempt to Delete the Branch (Incorrect)
+git branch -d /usr/src/kodekloudrepos/beta/
+❌ Error Received:
+error: branch '/usr/src/kodekloudrepos/beta/' not found
+________________________________________
+❌ Mistake #1: Treating a Path as a Branch
+🔴 What Went Wrong
+•	Used a filesystem path instead of a branch name
+•	Git branch deletion expects only the branch name
+🧠 Root Cause
+•	Confusion between:
+o	Linux directories (paths)
+o	Git branches (logical references inside a repo)
+✅ Correct Understanding
+•	Git branches are not folders
+•	Branches are identified only by names, such as:
+o	master
+o	dev
+o	xfusioncorp_beta
+________________________________________
+3️⃣ Correct Branch Listing
+git branch
+Output Example:
+* xfusioncorp_beta
+  master
+This confirmed:
+•	The branch exists
+•	It is currently checked out
+________________________________________
+4️⃣ Attempt to Delete Active Branch
+git branch -d xfusioncorp_beta
+❌ Error Received:
+error: cannot delete branch 'xfusioncorp_beta' used by worktree
+________________________________________
+❌ Mistake #2: Trying to Delete the Checked-Out Branch
+🔴 What Went Wrong
+•	Attempted to delete the branch that was currently active
+🧠 Root Cause
+•	Git protects the currently checked-out branch from deletion to avoid repository corruption
+✅ Solution
+Switch to another branch before deleting.
+________________________________________
+5️⃣ Switched to Safe Branch
+git checkout master
+✔ Now the repository is no longer using xfusioncorp_beta
+________________________________________
+6️⃣ Branch Deletion (Successful)
+git branch -d xfusioncorp_beta
+✔ Branch deleted successfully
+________________________________________
+⚠️ Additional Issue Encountered: Permission Error
+Error:
+fatal: Unable to create '/usr/src/kodekloudrepos/beta/.git/index.lock': Permission denied
+________________________________________
+❌ Mistake #3: Git Repository Ownership / Permission Issue
+🔴 What Went Wrong
+•	Repository ownership or permissions were not aligned with the current user
+🧠 Root Cause
+•	Repository was created or modified by a different user
+•	Git safety mechanism prevented lock file creation
+✅ Solution
+sudo chown -R natasha:natasha /usr/src/kodekloudrepos/beta
+✔ This restored write permissions and allowed Git operations
+________________________________________
+📊 Summary of Mistakes & Fixes
+Mistake	Cause	Solution
+Using directory path as branch	Confused filesystem with Git logic	Use branch name only
+Deleting active branch	Branch was checked out	Switch to master
+Permission denied error	Ownership mismatch	chown -R user:user
+________________________________________
+🧠 Key Learnings from This Task
+🔹 Git Concepts
+•	Branches are logical references, not directories
+•	You cannot delete the currently active branch
+•	Always verify branch status using git branch
+🔹 Linux & Git Integration
+•	File ownership affects Git operations
+•	.git/index.lock is critical for Git write actions
+🔹 DevOps Mindset
+•	Read errors carefully — they usually explain the problem
+•	Always validate:
+o	Where you are
+o	Which branch you’re on
+o	Who owns the files
+________________________________________
+🎯 Final Outcome
+✅ Successfully deleted the xfusioncorp_beta branch
+✅ Repository cleaned as per requirement
+✅ Improved understanding of Git internals and Linux permissions
