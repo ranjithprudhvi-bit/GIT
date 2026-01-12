@@ -1,0 +1,63 @@
+There is a Git server utilized by the Nautilus project teams. Recently, a new developer named Jon joined the team and needs to begin working on a project. To begin, he must fork an existing Git repository. Follow the steps below: Click on the Gitea UI button located on the top bar to access the Gitea page. Login to Gitea server using username jon and password Jon_pass123. Once logged in, locate the Git repository named sarah/story-blog and fork it under the jon user.
+
+
+🎯 Task Objective
+Fork the repository sarah/story-blog under the jon user account using the Gitea UI.
+________________________________________
+🧭 Step-by-Step Procedure (Web UI)
+Step 1: Open Gitea UI
+•	On the KodeKloud/Nautilus interface, click the “Gitea UI” button available on the top bar.
+•	This will open the Gitea login page in a new tab.
+📸 Screenshot 1: Gitea login page (before login)
+________________________________________
+Step 2: Login to Gitea
+Use the following credentials:
+•	Username: jon
+•	Password: Jon_pass123
+Click Sign In.
+📸 Screenshot 2: Successfully logged-in Gitea dashboard (shows username jon)
+________________________________________
+Step 3: Locate the Repository
+•	In the top search bar OR
+•	Click Explore → Repositories
+•	Search for:
+•	sarah/story-blog
+Click on the repository name to open it.
+📸 Screenshot 3: Repository page showing sarah/story-blog
+________________________________________
+Step 4: Fork the Repository
+•	On the top-right corner of the repository page, click the Fork button.
+•	When prompted:
+o	Select jon as the destination owner (if asked)
+•	Confirm the fork.
+⏳ Wait a few seconds for the fork process to complete.
+📸 Screenshot 4: Fork confirmation or redirect to jon/story-blog
+________________________________________
+Step 5: Verify the Fork
+•	Ensure the repository now shows:
+•	jon/story-blog
+•	The page header should clearly display jon as the owner.
+📸 Screenshot 5 (Important): Forked repository under jon
+________________________________________
+✅ Final Verification Checklist
+✔ Logged in as jon
+✔ Repository owner is jon
+✔ Repository name is story-blog
+✔ Original source shows forked from sarah/story-blog
+________________________________________
+🎥 Screen Recording (Optional but Recommended)
+You may use loom.com or any screen recorder to:
+•	Record login
+•	Repository search
+•	Fork action
+•	Final verification page
+This is useful if screenshots are insufficient or requested by reviewers.
+________________________________________
+🧠 Common Mistakes to Avoid
+❌ Forking under the wrong user
+❌ Taking screenshots without username visible
+❌ Cloning instead of forking
+❌ Missing final verification screenshot
+________________________________________
+🏁 Summary (For Reviewers)
+Successfully logged into Gitea as user jon and forked the repository sarah/story-blog under jon/story-blog using the Gitea Web UI.
